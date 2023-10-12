@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>View Reviews</title>
+	<link rel="stylesheet" th:href="@{style.css}">
+</head>
+
+<body>
+	<table>
+		<tr>
+			<th>Restaurant Name:</th>
+			<th>Rating:</th>
+			<th>Review:</th>
+			<th>Date Time:</th>
+		</tr>
+
+		<tr th:each="rev : ${reviews}">
+			<td th:text="${rev.restaurantName}"></td>
+			<td th:text="${rev.rating}" th:class="${rev.rating < 2.5} ? 'neg-review' : 'pos-review'"></td>
+			<td th:text="${rev.reviewText}"></td>
+			<td th:text="${rev.dateTimeUploaded}"></td>
+
+		</tr>
+	</table>
+	<a th:href="@{/add}">Add review</a>
+</body>
+
+</html>
